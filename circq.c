@@ -1,13 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 int q[20],n,f,r;
 
 void insert(int x){
     r=(r+1)%n;
-    if (r==f)
+    if (f==r)
     {
         printf("Queue is full\n");
+        return;
     }
     else if(r==-1){
         f=0;
@@ -19,39 +18,42 @@ void insert(int x){
     }
 }
 
-void delete(int x){
-    if (f==-1){
+void delete(){
+	int d;
+    if (f==-1 && r==-1){
         printf("Queue is empty\n");
+        return;
     }
     else if (f==r)
     {
-        x=q[f];
+        d=q[f];
         f=-1;
         r=-1;
     }
     else{
-        x=q[f];
+        d=q[f];
         f=(f+1)%n;
     }
+    printf("Deleted Element is %d",d);
 }
 
 void display(){
     int i;
-    if (f==-1)
-    {
+    if (f==-1 && r==-1){
         printf("Queue is empty\n");
+        return;
     }
     else if (f<=r){
         for(i=f;i<=r;i++){
-            printf("%d",q[i]);
+            printf("%d ",q[i]);
         }
     }
     else{
         for(i=f;i<n;i++){
-            printf("%d",q[i]);
+            printf("%d ",q[i]);
         }
         for (i=0;i<=r;i++){
-            printf("%d",q[i]);
+            printf("%d ",q[i]);
         }
     }
 }
@@ -67,21 +69,25 @@ void main (){
         printf("1.Insert\n2.Delete\n3.Display\n4.Exit\n");
         scanf("%d",&ch);
         switch(ch){
-            case 1:printf("Enter the element to be inserted\n");
-                    scanf("%d",&x);
-                    insert(x);
-                    r++;
-                    break;
-            case 2:delete(x);
-                    break;
-                    f++;
-            case 3:display();
-                    break;
-            case 4:exit(0);
-                    break;
+            case 1:	
+            	printf("Enter the element to be inserted : ");
+                scanf("%d",&x);
+                insert(x);
+                r++;
+                display();
+                break;
+            case 2:	
+            	delete(x);
+        		f++;
+        		display();
+                break;
+            case 3:
+            	display();
+                break;
+            case 4:
+            	exit(0);
+                break;
             default:printf("Invalid choice\n");
         }
     }
 }
-
-
