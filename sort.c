@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void quick(int arr[],int low, int high){
+void quicks(int arr[],int low, int high){
 	if(low<high){
 		int part=partition(arr,low,high);
 		
-		quick(arr,low,part-1);
-		quick(arr,low+1,part);
+		quicks(arr,low,part-1);
+		quicks(arr,low+1,part);
 	}
 	
 }
@@ -29,5 +29,7 @@ void swap(int* a,int* b){
 	*a=*b;
 	*b=temp;
 }
+
+void merges()
 
 
