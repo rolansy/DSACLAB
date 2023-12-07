@@ -4,10 +4,67 @@ void quicks(int arr[],int low, int high);
 void partition(int arr[],int low,int high);
 void swap(int* a,int* b);
 void merges(int arr[], int low, int high);
-void merge(int arr[],int low,int mid,int high)
-void heaps(int arr[], int n)
-void buildH(int arr[], int n)
-void maxH(int arr[], int n, int i)
+void merge(int arr[],int low,int mid,int high);
+void heaps(int arr[], int n);
+void buildH(int arr[], int n);
+void maxH(int arr[], int n, int i);
+
+int main() {
+    int choice, n, i;
+    printf("Enter the Number of Elements in the Array : ");
+    scanf("%d", &n);
+    
+    int arr[n];
+    printf("Enter the Elements : ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Quick Sort\n");
+        printf("2. Merge Sort\n");
+        printf("3. Heap Sort\n");
+        printf("4. Exit\n");
+        printf("Enter Choice : ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                quicks(arr, 0, n - 1);
+                printf("Array after Quick Sort : ");
+                for (i = 0; i < n; i++) {
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+                break;
+            case 2:
+                merges(arr, 0, n - 1);
+                printf("Array after Merge Sort : ");
+                for (i = 0; i < n; i++) {
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+                break;
+            case 3:
+                heaps(arr, n);
+                printf("Array after Heap Sort : ");
+                for (i = 0; i < n; i++) {
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+                break;
+            case 4:
+                printf("\n");
+                break;
+            default:
+                printf("Invalid choice! Choose a Valid Option!\n");
+                break;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
 
 void quicks(int arr[],int low, int high){
 	if(low<high){
