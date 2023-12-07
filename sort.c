@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+void quicks(int arr[],int low, int high);
+void partition(int arr[],int low,int high);
+void swap(int* a,int* b);
+void merges(int arr[], int low, int high);
+void merge(int arr[],int low,int mid,int high)
+void heaps(int arr[], int n)
+void buildH(int arr[], int n)
+void maxH(int arr[], int n, int i)
+
 void quicks(int arr[],int low, int high){
 	if(low<high){
 		int part=partition(arr,low,high);
