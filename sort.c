@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void quicks(int arr[],int low, int high);
-void partition(int arr[],int low,int high);
+int partition(int arr[],int low,int high);
 void swap(int* a,int* b);
 void merges(int arr[], int low, int high);
 void merge(int arr[],int low,int mid,int high);
@@ -71,14 +71,14 @@ void quicks(int arr[],int low, int high){
 		int part=partition(arr,low,high);
 		
 		quicks(arr,low,part-1);
-		quicks(arr,low+1,part);
+		quicks(arr,part+1,high);
 	}
 	
 }
 
-void partition(int arr[],int low,int high){
+int partition(int arr[],int low,int high){
 	int p=arr[high];
-	int i=low-1;
+	int i=(low-1);
 	
 	for(int j=low;j<=high-1;j++){
 		if(arr[j]<p){
@@ -113,9 +113,9 @@ void merge(int arr[],int low,int mid,int high){
 	
 	for (int i=0;i<n1;i++){
 		L[i]=arr[low+i];
-	{
+	}
 	for(int j=0;j<n2;j++){
-		R[j]=arr[mid+1+j]
+		R[j]=arr[mid+1+j];
 	}
 	
 	int i=0, j=0, k=low;
@@ -123,7 +123,8 @@ void merge(int arr[],int low,int mid,int high){
         if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
-        } else {
+        } 
+        else {
             arr[k] = R[j];
             j++;
         }
